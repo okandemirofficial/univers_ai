@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:univers_ai/utility/color.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton({super.key, required this.function, required this.label});
-  final Function()? function;
-  final Text label;
+  const MyButton({
+    super.key,
+    required this.function,
+    required this.text,  this.isLoading=false,
+  });
+  final void Function()? function;
+  final String text;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,26 +18,21 @@ class MyButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(
         vertical: 20,
       ),
-      child: ElevatedButton.icon(
+      child: ElevatedButton(
         onPressed: function,
-        icon: const Icon(Icons.save),
-        label: label,
-        style: ButtonStyle(
-          iconColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-              return MyColor.primaryColor;
-            },
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+                8.0), // Buradaki değeri istediğiniz gibi ayarlayabilirsiniz
           ),
-          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-              return MyColor.primaryColor;
-            },
-          ),
-          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-            (Set<MaterialState> states) {
-              return MyColor.secondaryColor;
-            },
-          ),
+          backgroundColor: MyColor.secondaryColor,
+        ),
+        child:isLoading?const Center(child: CircularProgressIndicator(color: MyColor.primaryColor,),) :Text(
+          text,
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge
+              ?.copyWith(color: MyColor.primaryColor),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:univers_ai/model/view_model/login_screen_view_model.dart';
 import 'package:univers_ai/screens/sign_up_screen.dart';
 import 'package:univers_ai/utility/color.dart';
 import 'package:univers_ai/utility/logo_image.dart';
@@ -12,25 +13,9 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  @override
-  void dispose() {
-    super.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-  }
-
+class _LoginScreenState extends LoginScreenViewModel {
   @override
   Widget build(BuildContext context) {
-    void goToSignUpScreen() {
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) {
-          return const SignUpScreen();
-        }),
-      );
-    }
     return Scaffold(
       backgroundColor: MyColor.backgroundColor,
       body: Center(
@@ -42,20 +27,31 @@ class _LoginScreenState extends State<LoginScreen> {
                 imageName: 'assets/logo/logo.jpeg',
               ),
               MyTextField(
-                  textEditingController: _emailController,
-                  hintText: 'Lütfen emailinizi giriniz ',
-                  labelText: 'mail'),
+                textEditingController: emailController,
+                hintText: 'Lütfen emailinizi giriniz ',
+                labelText: 'mail',
+                textInputType: TextInputType.emailAddress,
+              ),
               MyTextField(
-                  textEditingController: _passwordController,
-                  hintText: 'Lütfen şifrenizi giriniz ',
-                  labelText: 'password',textInputAction: TextInputAction.done,),
-              MyButton(function: () {}, label: const Text('Kaydet')),
-               Row(
+                textEditingController: passwordController,
+                hintText: 'Lütfen şifrenizi giriniz ',
+                labelText: 'password',
+                textInputAction: TextInputAction.done,
+                textInputType: TextInputType.text,
+                obsecureText: true,
+                autofillHints: const [AutofillHints.password],
+              ),
+              MyButton(
+                function: login,
+                text: 'Giriş',
+                isLoading: isLoading,
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("Hesabınız yok mu? "),
                   GestureDetector(
-                    onTap: goToSignUpScreen,
+                    onTap: () => goToScreen(const SignUpScreen()),
                     child: Text(
                       "Sign Up",
                       style: Theme.of(context).textTheme.labelLarge,
