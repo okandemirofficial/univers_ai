@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return const HomeScreen();
             } else if (snapshot.hasError) {
-              CustomSnackBar.showCustomSnackBar(context,"Hata oluştu , lütfen internete bağlandığınızdan emin olun");
+              CustomSnackBar.showCustomSnackBar(context,
+                  "Hata oluştu , lütfen internete bağlandığınızdan emin olun");
             }
           }
           if (snapshot.connectionState == ConnectionState.waiting) {

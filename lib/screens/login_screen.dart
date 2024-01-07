@@ -20,49 +20,52 @@ class _LoginScreenState extends LoginScreenViewModel {
       backgroundColor: MyColor.backgroundColor,
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const LogoImage(
-                imageName: 'assets/logo/logo.jpeg',
-              ),
-              MyTextField(
-                textEditingController: emailController,
-                hintText: 'Lütfen emailinizi giriniz ',
-                labelText: 'mail',
-                textInputType: TextInputType.emailAddress,
-              ),
-              MyTextField(
-                textEditingController: passwordController,
-                hintText: 'Lütfen şifrenizi giriniz ',
-                labelText: 'password',
-                textInputAction: TextInputAction.done,
-                textInputType: TextInputType.text,
-                obsecureText: true,
-                autofillHints: const [AutofillHints.password],
-              ),
-              MyButton(
-                function: login,
-                text: 'Giriş',
-                isLoading: isLoading,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Hesabınız yok mu? "),
-                  GestureDetector(
-                    onTap: () => goToScreen(const SignUpScreen()),
-                    child: Text(
-                      "Sign Up",
-                      style: Theme.of(context).textTheme.labelLarge,
-                    ),
-                  )
-                ],
-              ),
-              const LogoImage(
-                imageName: 'assets/logo/text_logo.jpeg',
-              ),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const LogoImage(
+                  imageName: 'assets/logo/logo.jpeg',
+                ),
+                MyTextField(
+                  textEditingController: emailController,
+                  hintText: 'Lütfen emailinizi giriniz ',
+                  labelText: 'mail',
+                  textInputType: TextInputType.emailAddress,
+                ),
+                MyTextField(
+                  textEditingController: passwordController,
+                  hintText: 'Lütfen şifrenizi giriniz ',
+                  labelText: 'password',
+                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.text,
+                  obsecureText: true,
+                  autofillHints: const [AutofillHints.password],
+                ),
+                MyButton(
+                  function: login,
+                  text: 'Giriş',
+                  isLoading: isLoading,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Hesabınız yok mu? "),
+                    GestureDetector(
+                      onTap: () => goToScreen(const SignUpScreen()),
+                      child: Text(
+                        "Sign Up",
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                    )
+                  ],
+                ),
+                const LogoImage(
+                  imageName: 'assets/logo/text_logo.jpeg',
+                ),
+              ],
+            ),
           ),
         ),
       ),
