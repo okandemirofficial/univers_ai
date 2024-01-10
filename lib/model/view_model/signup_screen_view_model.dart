@@ -5,13 +5,16 @@ import 'package:univers_ai/screens/sign_up_screen.dart';
 import 'package:univers_ai/service/auth_service.dart';
 import 'package:univers_ai/utility/custom_snack_bar.dart';
 
-abstract class SignUpScreenViewModel extends State<SignUpScreen>{
-   final TextEditingController nameController = TextEditingController();
+abstract class SignUpScreenViewModel extends State<SignUpScreen> {
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
   bool isLoading = false;
   @override
   void dispose() {
@@ -38,7 +41,10 @@ abstract class SignUpScreenViewModel extends State<SignUpScreen>{
   }
 
   signUp() async {
-    String? result;
+    if (formkey.currentState!.validate() == false) {
+      return;
+    } else {
+        String? result;
     _changeLoading();
     if (passwordController.text == confirmPasswordController.text &&
         nameController.text.isNotEmpty &&
@@ -66,6 +72,7 @@ abstract class SignUpScreenViewModel extends State<SignUpScreen>{
       CustomSnackBar.showCustomSnackBar(context, "Boş bırakılamaz");
       _changeLoading();
     }
+    }
+  
   }
-
 }

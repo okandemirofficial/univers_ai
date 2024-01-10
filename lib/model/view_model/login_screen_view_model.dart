@@ -4,9 +4,12 @@ import 'package:univers_ai/screens/login_screen.dart';
 import 'package:univers_ai/service/auth_service.dart';
 import 'package:univers_ai/utility/custom_snack_bar.dart';
 
-abstract class LoginScreenViewModel extends State<LoginScreen>{
-    final TextEditingController emailController = TextEditingController();
+abstract class LoginScreenViewModel extends State<LoginScreen> {
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
   bool isLoading = false;
   @override
   void dispose() {
@@ -22,22 +25,27 @@ abstract class LoginScreenViewModel extends State<LoginScreen>{
   }
 
   void login() async {
-    String? result;
-    _changeLoading();
-    if (emailController.text.isNotEmpty &&
-        passwordController.text.isNotEmpty) {
-      result = await AuthService().login(
-          email: emailController.text, password: passwordController.text);
-      if (result == "success") {
-        _changeLoading();
-        goToScreen(const HomeScreen());
+    if (formkey.currentState!.validate() == false) {
+      return;
+    } else {
+      String? result;
+      _changeLoading();
+      if (emailController.text.isNotEmpty &&
+          passwordController.text.isNotEmpty) {
+        result = await AuthService().login(
+            email: emailController.text, password: passwordController.text);
+        if (result == "success") {
+          _changeLoading();
+          goToScreen(const HomeScreen());
+        } else {
+          CustomSnackBar.showCustomSnackBar(
+              context, "Email veya şifreniz hatalıdır");
+          _changeLoading();
+        }
       } else {
-        CustomSnackBar.showCustomSnackBar(context,"Email veya şifreniz hatalıdır");
+        CustomSnackBar.showCustomSnackBar(context, "Boş bırakmayınız");
         _changeLoading();
       }
-    } else {
-      CustomSnackBar.showCustomSnackBar(context,"Boş bırakmayınız");
-      _changeLoading();
     }
   }
 
@@ -48,5 +56,4 @@ abstract class LoginScreenViewModel extends State<LoginScreen>{
       }),
     );
   }
-
 }

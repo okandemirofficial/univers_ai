@@ -21,7 +21,6 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> key = GlobalKey();
     return Container(
       margin: MyPadding.textMargin,
       padding: MyPadding.textPadding,
@@ -29,28 +28,25 @@ class MyTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           border: Border.all(),
           color: MyColor.primaryColor),
-      child: Form(
-        key: key,
-        child: TextFormField(
-          validator: (value) => (value?.isNotEmpty ??false)?null:'Boş geçilemez',
-          controller: textEditingController,
-          textInputAction: textInputAction,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: const TextStyle(color: MyColor.styleColor),
-            labelText: labelText,
-            labelStyle: const TextStyle(color: MyColor.styleColor),
-            border: InputBorder.none,
-            suffixIcon: obsecureText? Icon(Icons.lock,color: MyColor.iconColor,) :null
-          ),
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: Colors.black),
-          autofillHints:autofillHints,
-          keyboardType: textInputType,
-          obscureText: obsecureText,
+      child: TextFormField(
+        validator: (value) => (value?.isNotEmpty ??false)?null:'Boş geçilemez',
+        controller: textEditingController,
+        textInputAction: textInputAction,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: const TextStyle(color: MyColor.styleColor),
+          labelText: labelText,
+          labelStyle: const TextStyle(color: MyColor.styleColor),
+          border: InputBorder.none,
+          suffixIcon: obsecureText? Icon(Icons.lock,color: MyColor.iconColor,) :null
         ),
+        style: Theme.of(context)
+            .textTheme
+            .bodyMedium
+            ?.copyWith(color: Colors.black),
+        autofillHints:autofillHints,
+        keyboardType: textInputType,
+        obscureText: obsecureText,
       ),
     );
   }
