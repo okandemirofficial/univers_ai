@@ -8,48 +8,60 @@ class LinkScreen extends StatefulWidget {
   State<LinkScreen> createState() => _LinkScreenState();
 }
 
-class _LinkScreenState extends State<LinkScreen>{
+class _LinkScreenState extends State<LinkScreen> {
+  var textInstagram = "İnstagram";
+  var urlInstagram = "https://www.instagram.com/universait/";
+  var textYoutube = "Youtube";
+  var urlYoutube = "https://www.youtube.com/channel/UCVM8BsqvKyuDZrkLIBoWZzw";
+  var textLinkedin = "Linkedin";
+  var urlLinkedin = "https://www.linkedin.com/company/univers-ai/";
+  var textX = "X";
+  var urlX = "https://medium.com/@aiuniversait";
+  var textMedium = "Medium";
+  var url6 = "https://medium.com/@aiuniversait";
+  var textWeb = "Web Sitemiz";
+  var url7 = "https://univers-ai.com/";
   @override
   Widget build(BuildContext context) {
     const sizedBox = SizedBox(
-                height: 15,
-              );
-    return const Scaffold(
+      height: 15,
+    );
+    return Scaffold(
       body: Center(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, 
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               sizedBox,
               LinkButton(
-                text: "İnstagram",
-                url: "https://www.instagram.com/universait/",
-              ),
-             sizedBox,
-              LinkButton(
-                text: "Youtube",
-                url: "https://www.youtube.com/channel/UCVM8BsqvKyuDZrkLIBoWZzw",
-              ),
-             sizedBox,
-              LinkButton(
-                text: "Linkedin",
-                url: "https://www.linkedin.com/company/univers-ai/",
+                text: textInstagram,
+                url: urlInstagram,
               ),
               sizedBox,
               LinkButton(
-                text: "X",
-                url: "https://medium.com/@aiuniversait",
+                text: textYoutube,
+                url: urlYoutube,
               ),
               sizedBox,
               LinkButton(
-                text: "Medium",
-                url: "https://medium.com/@aiuniversait",
+                text: textLinkedin,
+                url: urlLinkedin,
               ),
               sizedBox,
               LinkButton(
-                text: "Web Sitemiz",
-                url: "https://univers-ai.com/",
+                text: textX,
+                url: urlX,
+              ),
+              sizedBox,
+              LinkButton(
+                text: textMedium,
+                url: url6,
+              ),
+              sizedBox,
+              LinkButton(
+                text: textWeb,
+                url: url7,
               ),
             ],
           ),
@@ -58,5 +70,3 @@ class _LinkScreenState extends State<LinkScreen>{
     );
   }
 }
-
-

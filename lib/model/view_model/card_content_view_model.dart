@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:univers_ai/utility/custom_snack_bar.dart';
 import 'package:univers_ai/widgets/card_content.dart';
 
-abstract class CardContentViewModel extends State<CardContent>{
-    final FirebaseAuth auth = FirebaseAuth.instance;
+abstract class CardContentViewModel extends State<CardContent> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   Map<int, bool> isCheckedMap = {};
   bool isLoading = false;
   double totalPrice = 0.0;
+
+  var sumText = 'toplam';
+  var offerText = "Teklif Al";
+
   _changeLoading() {
     setState(() {
       isLoading = !isLoading;
@@ -50,5 +54,4 @@ abstract class CardContentViewModel extends State<CardContent>{
       }
     });
   }
-
 }

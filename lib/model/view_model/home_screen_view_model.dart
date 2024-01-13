@@ -9,6 +9,9 @@ abstract class HomeScreenViewModel  extends State<HomeScreen>{
     int selectedIndex = 0;
   final List<Widget> screens = [const OurServices(), const LinkScreen()];
 
+    var labelServices = "Hizmetlerimiz";
+    var labelCommunication = "İletişim Kanallari";
+
   Future<dynamic> logoutDialog(BuildContext context) {
     void goToScreen(Widget widget) {
       Navigator.of(context).push(

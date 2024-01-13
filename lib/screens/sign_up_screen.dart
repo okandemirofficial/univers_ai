@@ -31,35 +31,35 @@ class _SignUpScreenState extends SignUpScreenViewModel {
                 ),
                 MyTextField(
                   textEditingController: nameController,
-                  hintText: 'Lütfen adınızı giriniz ',
-                  labelText: 'name',
+                  hintText: hintTextName,
+                  labelText: labelTextName,
                   textInputType: TextInputType.text,
                   autofillHints: const [AutofillHints.name],
                 ),
                 MyTextField(
                   textEditingController: emailController,
-                  hintText: 'Lütfen emailinizi giriniz ',
-                  labelText: 'mail',
+                  hintText: hintTextEmail,
+                  labelText: labelTextEmail,
                   textInputType: TextInputType.emailAddress,
                 ),
                 MyTextField(
                   textEditingController: phoneController,
-                  hintText: 'Lütfen telefon numaranızı giriniz ',
-                  labelText: 'phone',
+                  hintText: hintTextPhone,
+                  labelText: labelTextPhone,
                   textInputType: TextInputType.phone,
                 ),
                 MyTextField(
                   textEditingController: passwordController,
-                  hintText: 'Lütfen şifrenizi giriniz ',
-                  labelText: 'password',
+                  hintText: hintTextPassword,
+                  labelText: labelTextPassword,
                   textInputType: TextInputType.text,
                   obsecureText: true,
                   autofillHints: const [AutofillHints.newPassword],
                 ),
                 MyTextField(
                   textEditingController: confirmPasswordController,
-                  hintText: 'Lütfen şifrenizi doğrulayın',
-                  labelText: 'password',
+                  hintText: hintTextConfirmPassword,
+                  labelText: labelTextConfirmPassword,
                   textInputAction: TextInputAction.done,
                   textInputType: TextInputType.text,
                   obsecureText: true,
@@ -67,17 +67,17 @@ class _SignUpScreenState extends SignUpScreenViewModel {
                 ),
                 MyButton(
                   function: signUp,
-                  text: 'Kaydet',
+                  text: buttonText,
                   isLoading: isLoading,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Zaten hesabınız var mı? "),
+                     Text(loginText),
                     GestureDetector(
                       onTap: () => goToScreen(const LoginScreen()),
                       child: Text(
-                        "Login",
+                        loginText2,
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                     )

@@ -11,6 +11,15 @@ abstract class LoginScreenViewModel extends State<LoginScreen> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   bool isLoading = false;
+
+  var hintTextEmail = 'Lütfen emailinizi giriniz ';
+  var labelTextEmail = 'mail';
+  var hintTextPassword = 'Lütfen şifrenizi giriniz ';
+  var labelTextPassword = 'password';
+  var buttonText = 'Giriş';
+  var signUpText = "Hesabınız yok mu? ";
+  var signUpText2 = "Sign Up";
+
   @override
   void dispose() {
     super.dispose();

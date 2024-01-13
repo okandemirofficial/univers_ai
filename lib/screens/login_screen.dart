@@ -16,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends LoginScreenViewModel {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: MyColor.backgroundColor,
       body: Center(
@@ -26,18 +27,18 @@ class _LoginScreenState extends LoginScreenViewModel {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const LogoImage(
-                  imageName: 'assets/logo/logo.jpeg',
+                  imageName:'assets/logo/logo.jpeg',
                 ),
                 MyTextField(
                   textEditingController: emailController,
-                  hintText: 'Lütfen emailinizi giriniz ',
-                  labelText: 'mail',
+                  hintText: hintTextEmail,
+                  labelText: labelTextEmail,
                   textInputType: TextInputType.emailAddress,
                 ),
                 MyTextField(
                   textEditingController: passwordController,
-                  hintText: 'Lütfen şifrenizi giriniz ',
-                  labelText: 'password',
+                  hintText: hintTextPassword,
+                  labelText: labelTextPassword,
                   textInputAction: TextInputAction.done,
                   textInputType: TextInputType.text,
                   obsecureText: true,
@@ -45,17 +46,17 @@ class _LoginScreenState extends LoginScreenViewModel {
                 ),
                 MyButton(
                   function: login,
-                  text: 'Giriş',
+                  text: buttonText,
                   isLoading: isLoading,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Hesabınız yok mu? "),
+                    Text(signUpText),
                     GestureDetector(
                       onTap: () => goToScreen(const SignUpScreen()),
                       child: Text(
-                        "Sign Up",
+                        signUpText2,
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                     )

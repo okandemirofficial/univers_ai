@@ -31,12 +31,12 @@ class _HomeScreenState extends HomeScreenViewModel {
             });
           },
           currentIndex: selectedIndex,
-          items: const [
+          items:  [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled), label: "Hizmetlerimiz"),
+                icon:const Icon(Icons.home_filled), label: labelServices),
             BottomNavigationBarItem(
-                icon: Icon(Icons.contactless_outlined),
-                label: "İletişim Kanallari")
+                icon:const Icon(Icons.contactless_outlined),
+                label: labelCommunication)
           ],
         ),
         body: screens[selectedIndex]);
