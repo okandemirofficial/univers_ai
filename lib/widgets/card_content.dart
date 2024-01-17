@@ -18,7 +18,9 @@ class CardContent extends StatefulWidget {
   @override
   State<CardContent> createState() => _CardContentState();
 }
+
 class _CardContentState extends CardContentViewModel {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,7 @@ class _CardContentState extends CardContentViewModel {
           Flexible(
             flex: 3,
             child: Container(
-              margin:const EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               padding: const EdgeInsets.only(left: 10, bottom: 20),
               height: double.infinity,
               child: SingleChildScrollView(
@@ -77,10 +79,10 @@ class _CardContentState extends CardContentViewModel {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("toplam: $totalPrice"),
+                Text("$sumText : $totalPrice"),
                 MyButton(
                   function: dataToFirebase,
-                  text: "Teklif Al",
+                  text: offerText,
                   isLoading: isLoading,
                 )
               ],

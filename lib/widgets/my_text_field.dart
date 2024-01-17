@@ -7,10 +7,7 @@ class MyTextField extends StatelessWidget {
     required this.textEditingController,
     required this.hintText,
     required this.labelText,
-    this.textInputAction = TextInputAction.next,
-    this.autofillHints = const [AutofillHints.email],
-    required this.textInputType,
-    this.obsecureText = false,
+    this.textInputAction = TextInputAction.next, this.autofillHints=const [AutofillHints.email], required this.textInputType, this.obsecureText=false,
   });
   final TextEditingController textEditingController;
   final String hintText;
@@ -19,6 +16,8 @@ class MyTextField extends StatelessWidget {
   final List<String> autofillHints;
   final TextInputType textInputType;
   final bool obsecureText;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -30,27 +29,22 @@ class MyTextField extends StatelessWidget {
           border: Border.all(),
           color: MyColor.primaryColor),
       child: TextFormField(
-        validator: (value) =>
-            (value?.isNotEmpty ?? false) ? null : 'Boş geçilemez',
+        validator: (value) => (value?.isNotEmpty ??false)?null:'Boş geçilemez',
         controller: textEditingController,
         textInputAction: textInputAction,
         decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: const TextStyle(color: MyColor.styleColor),
-            labelText: labelText,
-            labelStyle: const TextStyle(color: MyColor.styleColor),
-            border: InputBorder.none,
-            suffixIcon: obsecureText
-                ? Icon(
-                    Icons.lock,
-                    color: MyColor.iconColor,
-                  )
-                : null),
+          hintText: hintText,
+          hintStyle: const TextStyle(color: MyColor.styleColor),
+          labelText: labelText,
+          labelStyle: const TextStyle(color: MyColor.styleColor),
+          border: InputBorder.none,
+          suffixIcon: obsecureText? Icon(Icons.lock,color: MyColor.iconColor,) :null
+        ),
         style: Theme.of(context)
             .textTheme
             .bodyMedium
             ?.copyWith(color: Colors.black),
-        autofillHints: autofillHints,
+        autofillHints:autofillHints,
         keyboardType: textInputType,
         obscureText: obsecureText,
       ),

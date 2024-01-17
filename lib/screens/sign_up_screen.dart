@@ -21,70 +21,73 @@ class _SignUpScreenState extends SignUpScreenViewModel {
       backgroundColor: MyColor.backgroundColor,
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const LogoImage(
-                imageName: 'assets/logo/logo.jpeg',
-              ),
-              MyTextField(
-                textEditingController: nameController,
-                hintText: 'Lütfen adınızı giriniz ',
-                labelText: 'name',
-                textInputType: TextInputType.text,
-                autofillHints: const [AutofillHints.name],
-              ),
-              MyTextField(
-                textEditingController: emailController,
-                hintText: 'Lütfen emailinizi giriniz ',
-                labelText: 'mail',
-                textInputType: TextInputType.emailAddress,
-              ),
-              MyTextField(
-                textEditingController: phoneController,
-                hintText: 'Lütfen telefon numaranızı giriniz ',
-                labelText: 'phone',
-                textInputType: TextInputType.phone,
-              ),
-              MyTextField(
-                textEditingController: passwordController,
-                hintText: 'Lütfen şifrenizi giriniz ',
-                labelText: 'password',
-                textInputType: TextInputType.text,
-                obsecureText: true,
-                autofillHints: const [AutofillHints.newPassword],
-              ),
-              MyTextField(
-                textEditingController: confirmPasswordController,
-                hintText: 'Lütfen şifrenizi doğrulayın',
-                labelText: 'password',
-                textInputAction: TextInputAction.done,
-                textInputType: TextInputType.text,
-                obsecureText: true,
-                autofillHints: const [AutofillHints.password],
-              ),
-              MyButton(
-                function: signUp,
-                text: 'Kaydet',
-                isLoading: isLoading,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Zaten hesabınız var mı? "),
-                  GestureDetector(
-                    onTap: () => goToScreen(const LoginScreen()),
-                    child: Text(
-                      "Login",
-                      style: Theme.of(context).textTheme.labelLarge,
-                    ),
-                  )
-                ],
-              ),
-              const LogoImage(
-                imageName: 'assets/logo/text_logo.jpeg',
-              ),
-            ],
+          child: Form(
+            key: formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const LogoImage(
+                  imageName: 'assets/logo/logo.jpeg',
+                ),
+                MyTextField(
+                  textEditingController: nameController,
+                  hintText: hintTextName,
+                  labelText: labelTextName,
+                  textInputType: TextInputType.text,
+                  autofillHints: const [AutofillHints.name],
+                ),
+                MyTextField(
+                  textEditingController: emailController,
+                  hintText: hintTextEmail,
+                  labelText: labelTextEmail,
+                  textInputType: TextInputType.emailAddress,
+                ),
+                MyTextField(
+                  textEditingController: phoneController,
+                  hintText: hintTextPhone,
+                  labelText: labelTextPhone,
+                  textInputType: TextInputType.phone,
+                ),
+                MyTextField(
+                  textEditingController: passwordController,
+                  hintText: hintTextPassword,
+                  labelText: labelTextPassword,
+                  textInputType: TextInputType.text,
+                  obsecureText: true,
+                  autofillHints: const [AutofillHints.newPassword],
+                ),
+                MyTextField(
+                  textEditingController: confirmPasswordController,
+                  hintText: hintTextConfirmPassword,
+                  labelText: labelTextConfirmPassword,
+                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.text,
+                  obsecureText: true,
+                  autofillHints: const [AutofillHints.password],
+                ),
+                MyButton(
+                  function: signUp,
+                  text: buttonText,
+                  isLoading: isLoading,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                     Text(loginText),
+                    GestureDetector(
+                      onTap: () => goToScreen(const LoginScreen()),
+                      child: Text(
+                        loginText2,
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                    )
+                  ],
+                ),
+                const LogoImage(
+                  imageName: 'assets/logo/text_logo.jpeg',
+                ),
+              ],
+            ),
           ),
         ),
       ),
